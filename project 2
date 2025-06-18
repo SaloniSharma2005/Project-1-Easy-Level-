@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Responsive Sidebar with Sticky Banner</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* Sticky Banner */
+    .sticky-banner {
+      position: sticky;
+      top: 0;
+      background-color: #ff9800;
+      color: white;
+      padding: 10px;
+      font-weight: bold;
+      text-align: left;
+      z-index: 1000;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      height: 100vh;
+      width: 250px;
+      position: fixed;
+      top: 0;
+      left: -250px;
+      background-color: #333;
+      padding-top: 60px;
+      transition: 0.3s;
+      z-index: 999;
+    }
+
+    .sidebar a {
+      padding: 10px 20px;
+      text-decoration: none;
+      font-size: 18px;
+      color: #fff;
+      display: block;
+    }
+
+    .sidebar a:hover {
+      background-color: #575757;
+    }
+
+    .openbtn {
+      font-size: 20px;
+      cursor: pointer;
+      background-color: #333;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+    }
+
+    .openbtn:focus {
+      outline: 2px solid yellow;
+    }
+
+    .main {
+      margin-left: 20px;
+      padding: 20px;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 600px) {
+      .sidebar {
+        width: 200px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="sticky-banner">Apply for Internship</div>
+
+  <button class="openbtn" onclick="toggleSidebar()">☰ Menu</button>
+
+  <div id="mySidebar" class="sidebar" aria-label="Sidebar navigation" role="navigation">
+    <a href="#">Internship Application</a>
+    <a href="#">Offer Letter Generation</a>
+    <a href="#">Certificate Verification</a>
+    <a href="#">Join Team Form</a>
+    <a href="#">Contact Info</a>
+  </div>
+
+  <div class="main">
+    <h1>Welcome to MITS</h1>
+    <p>Scroll down to see the sticky banner in action and use the menu to explore sidebar links.</p>
+    <p style="height: 1000px">(Content goes here)</p>
+  </div>
+
+  <script>
+    const sidebar = document.getElementById("mySidebar");
+
+    function toggleSidebar() {
+      if (sidebar.style.left === "0px") {
+        sidebar.style.left = "-250px";
+      } else {
+        sidebar.style.left = "0px";
+      }
+    }
+
+    document.addEventListener("keydown", function (event) {
+      if (event.key === "Escape") {
+        sidebar.style.left = "-250px";
+      }
+    });
+  </script>
+</body>
+</html>
